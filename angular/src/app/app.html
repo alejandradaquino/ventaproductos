@@ -2,9 +2,12 @@
     <router-outlet>
     </router-outlet>
 </div>
-<div NgIf="wip" style="border-top: 1px solid #666;border-bottom: 1px solid #666">
-    <div style="width: 800px;  margin: 0 auto;">
-        <img src="assets/img/underconstruction.jpg" style="max-width: 800px;">
-    </div>
-
-</div>
+@if (wip) {
+  <div style="border-top: 1px solid #666;border-bottom: 1px solid #666">
+      <div style="width: 800px;  margin: 0 auto;">
+          <img src="assets/img/underconstruction.jpg" style="max-width: 800px;">
+      </div>
+  </div>
+}@else {
+  <div>Soy prod</div>
+}
