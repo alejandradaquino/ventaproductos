@@ -18,7 +18,13 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src/",
+                "output": "/"
               }
             ],
             "styles": [
@@ -68,10 +74,16 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
+            "assets":  [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src/",
+                "output": "/"
               }
             ],
             "styles": [

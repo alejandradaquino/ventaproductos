@@ -1,0 +1,2 @@
+[10-Sep-2017 13:49:59 America/Buenos_Aires] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/alfercom/public_html/baseecommerce/model/order.php on line 115
+[10-Sep-2017 13:56:49 America/Buenos_Aires] PHP Fatal error:  Class 'CompanyLoginHelper' not found in /home/alfercom/public_html/baseecommerce/rest/orderController.php on line 24
