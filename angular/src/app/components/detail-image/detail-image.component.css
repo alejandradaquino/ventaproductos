@@ -1,0 +1,9 @@
+.img-box{
+    min-height: 200px;
+    display: flex;
+    align-items:center;
+}
+img {
+    max-height: 200px;
+    margin: 0 auto;
+}

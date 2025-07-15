@@ -1,0 +1,18 @@
+<div class="container" style="margin-top: 25px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="carousel">
+                <div (click)="bannerClicked(banner)"
+                class="item slide-in slide-selected cursorpointer"
+                [class.cursorpointer]="banner.url !== undefined && banner.url!=''" 
+                [class.slide-selected]="selectedItem === 'banner' + banner.id"
+                 *ngFor="let banner of banners">
+                    <app-banner-image [minHeight] = "'20px'" [banner]="banner"></app-banner-image>
+                </div>
+                <div class="controls">
+                    <a *ngFor="let banner of banners" (click)="selectBanner(banner)" class="bannerbtn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

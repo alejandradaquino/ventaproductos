@@ -1,0 +1,32 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+<div class="container">
+
+  <div class="row container-box" style="margin-bottom: 20px;padding-bottom:20px"> 
+    <div class="col-md-6">
+
+      <div class="">
+        <div class="image-container">
+          <app-article-image [minHeight]="'300px'" [article]="article"></app-article-image>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="article-container">
+        <h1>
+          {{article.name}}<br>
+          {{article.axionCode}}
+        </h1>
+        <textarea id="textareaval" readonly="readonly" class="form-control" [innerHtml]="article.description"></textarea>
+        <app-price [article]="article" [company]="company"></app-price>
+        <app-plus-less *ngIf="quantity>0" [quantity]="quantity"
+          (plusClicked)="plusClicked()" (lessClicked)="lessClicked()"></app-plus-less>
+        <div *ngIf="quantity === undefined || quantity == 0">
+          <button type="button" class="btn btn-outline-primary" (click)="addToChart()">
+            <i class="fas fa-cart-arrow-down"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

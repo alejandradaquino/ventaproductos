@@ -1,0 +1,25 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+<div class="card-rows card-columns"
+  [class.card-rows]="rows"
+  [class.card-columns]="!rows" >
+  <div class="card">
+    <img class="card-img-top" src="holder.js/100x180/" alt="">
+    <div class="card-body">
+        <h4 class="card-title">Iniciar sesión</h4>
+            
+      <form *ngIf="!isLoggedUser" class="my-2 my-lg-0">
+        <label>Email</label> <input type="text" class="mr-sm-2 form-control" [(ngModel)]="user.email" name="username" placeholder="Email">
+        <label>Password</label> <input type="password" class=" mr-sm-2 form-control" [(ngModel)]="user.password" name="password" placeholder="Password">
+        <button style="width: 100%;margin-top:25px" class="btn btn-outline-primary my-2 my-sm-0" (click)="login()" title="Ingresar"class="btn btn-outline-primary">
+          <i class="fas fa-sign-in-alt"></i> Ingresar
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+

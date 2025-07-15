@@ -1,0 +1,28 @@
+<div style="background-color: white; padding-top: 2px; padding-bottom: 2px;">
+	<div class="container-fluid" style="margin-top:20px">
+		<div class="row">
+
+			<div class="col-md-3 col-4">
+				<a [routerLink]="['/']" routerLinkActive="router-link-active" >
+					<img src="assets/img/logo.jpg" class="img-fluid">
+				</a>
+			</div>
+			<div *ngIf="!wip" class="col-md-5  d-none d-sm-block">
+				<app-search></app-search>
+			</div>
+			<div *ngIf="!wip" class="col-md-2  col-8 mtop" style="text-align: center;">
+				<button class="btn btn-outline-primary ml-2" *ngIf="!isLoggedUser"  [routerLink]="['/login']" routerLinkActive="router-link-active">
+					<i class="fas fa-user-alt loginicon"></i> Iniciá sesión
+				</button>
+
+				<form *ngIf="isLoggedUser" class="frightmobile form-inline my-2 my-lg-0">
+					<a routerLink="/profile"><i class="fa fa-user-circle-o"></i> Bienvenido {{user.fullName}}</a>
+					<button class="btn btn-outline-primary ml-2" title="Salir" (click)="logout()"><i class="fas fa-sign-out-alt"></i></button>
+				</form>
+			</div>
+			<div *ngIf="!wip" class="col-md-2  d-none d-sm-block">
+				<app-order-preview></app-order-preview>
+			</div>
+		</div>
+	</div>
+</div>

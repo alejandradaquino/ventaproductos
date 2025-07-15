@@ -1,0 +1,69 @@
+.floatingcontainer {
+    right: 87px;
+    position: absolute;
+    width: 450px;
+    height: 35vw;
+    overflow: auto;
+    background-color: white;
+    z-index: 1000;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(62, 92, 27, 0.51);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(62, 92, 27, 0.51);
+    box-shadow: 0px 0px 10px 1px rgba(62, 92, 27, 0.51);
+    margin-top: 67px;
+    padding: 0 15px;
+}
+
+.orderDetail {
+    cursor: pointer;
+    /* background-color: #c0d52e;
+   background: linear-gradient( -45deg, #c0d52e, #c0d52e 49%,
+    white 49%, white 51%, #f3a72d 51% ); */
+    background: linear-gradient( -45deg, #f3a72d, #f3a72d 49%, #f3a72d 49%, #f3a72d 50%, #c0d52e 50%);
+    border-radius: 30px;
+    padding: 7px;
+    text-align: left;
+    margin-top: 30px;
+    float: left;
+    padding-left: 48px;
+}
+
+.orderbadge {
+    position: absolute;
+    margin-left: -35px;
+}
+
+.carticon {
+    font-size: 35px;
+    margin-left: -50px;
+    position: absolute;
+    margin-top: -5px;
+}
+
+.text-container {
+    flex: 50;
+    font-size: 12px;
+    padding-left: 5px;
+    text-transform: lowercase;
+}
+.text-container h5 {
+
+    font-size: 16px;
+    color: #7d8c1d;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.total-container{
+    background-color: #cfe064;
+    padding: 10px;
+    font-weight: bold;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.lineseparator{
+
+    border-top: 1px dotted #cfe064;
+    width: 100%;
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -10px;
+}

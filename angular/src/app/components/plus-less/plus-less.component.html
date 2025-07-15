@@ -1,0 +1,13 @@
+<div class="input-group">
+  <div class="input-group-prepend">
+    <button type="button" (click)="onLessClicked()" class="btn btn-outline-primary">
+      <i class="fa fa-minus" aria-hidden="true"></i>
+    </button>
+  </div>
+  <input type="text" readonly class="form-control" [(ngModel)]="quantity">
+  <div class="input-group-append">
+    <button type="button" (click)="onPlusClicked()" class="btn btn-outline-primary">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>

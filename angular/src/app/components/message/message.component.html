@@ -1,0 +1,17 @@
+@if (saveSuccess && showMessage) {
+  <div class="alert alert-success">
+    <strong>OK!</strong> Se realizó exitosamente
+  </div>
+}
+
+@else if (saveError && showMessage) {
+  <div class="alert alert-danger">
+    <strong>Error!</strong> Ha ocurrido un error
+  </div>
+}
+
+@if (showResult) {
+  <div class="alert alert-success">
+    {{ resultMessage }}
+  </div>
+}

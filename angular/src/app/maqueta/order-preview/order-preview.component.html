@@ -1,0 +1,39 @@
+<div (mouseenter)="visible = true" (click)="visible = false"  [routerLink]="['/pedido']" class="orderDetail">
+  <i class="fas fa-shopping-cart carticon"></i>
+  <span class="orderbadge badge badge-pill badge-success">{{order.details.length}}</span>
+  <span>$ {{order.getTotal()| number : '1.2-2'}}</span>
+  <div class="background-triangle"></div>
+</div>
+
+
+<div (mouseleave)="visible = false" class="floatingcontainer" *ngIf="visible">
+  <div *ngIf="order.details.length==0" style="margin-top:10px;margin-bottom:10px;" class="row">
+    El pedido no tiene art&iacute;culos
+  </div>
+  <div *ngFor="let detail of order.details" style="display:flex;margin-top:20px">
+    <div style="position: absolute;right:10px; color: red; z-index: 200; cursor:pointer;" (click)="remove(detail)">
+      <i class="fas fa-times-circle"></i>
+    </div>
+    <div style="flex: 50;border: 1px solid #F2F0E6;">
+      <app-detail-image [detail]="detail"></app-detail-image>
+    </div>
+    <div class="text-container">
+      <h5> {{detail.code}} - {{detail.name}}</h5>
+      <br />
+      Cantidad: {{detail.quantity}}
+      <br>
+      Precio: $ {{detail.price | number : '1.2-2'}}
+      <br>
+      Subtotal:<b> $ {{detail.getTotal() | number : '1.2-2'}}</b>
+
+    </div>
+    <div class="lineseparator"></div>
+  </div>
+  <div class="total-container">
+    Total
+    <span style="float:right"> $ {{order.getTotal()| number : '1.2-2'}}</span>
+  </div>
+  <div *ngIf="order.details.length > 0" style="margin-top:20px;margin-bottom: 3px;" class="row">
+    <button [routerLink]="['/pedido']" routerLinkActive="router-link-active"  style="width:100%" class="btn btn-primary">Continuar</button>
+  </div>
+</div>

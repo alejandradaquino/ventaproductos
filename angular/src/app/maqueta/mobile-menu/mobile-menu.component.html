@@ -1,0 +1,42 @@
+<nav style="margin: 0 -15px;" class="navbar navbar-expand-lg navbar-light bg-light d-block d-sm-none">
+  <div class="row">
+    <div class="col-2">
+
+      <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="col-9">
+
+      <app-search></app-search>
+    </div>
+    <div class="col-1" [routerLink]="['/pedido']" routerLinkActive="router-link-active" >
+      <i class="fas fa-shopping-cart carticon"></i>
+      <span class="orderbadge badge badge-pill badge-success">{{order.details.length}}</span>
+    </div>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="isBackofficeUser" class="nav-item active">
+        <a class="nav-link" [routerLink]="'/backoffice'">Administración</a>
+      </li>
+      <li class="nav-item dropdown show" [class.dropdown]="category.subcategories.length > 0"
+        *ngFor="let category of categories">
+        <a (click)="collapse()" class="nav-link dropdown-toggle"
+          [class.dropdown-toggle]="category.subcategories.length > 0"
+          [routerLink]="['/category', category.id, category.name]">{{category.name}}</a>
+        <div class="dropdown-menu show" aria-labelledby="navbarDropdown" *ngIf="category.subcategories.length > 0">
+          <a (click)="collapse()" *ngFor="let subcategory of category.subcategories" class="dropdown-item"
+            [routerLink]="['/subcategory', subcategory.id, subcategory.name]">
+            {{subcategory.name}}</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>

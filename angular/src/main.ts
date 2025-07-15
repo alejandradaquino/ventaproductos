@@ -37,3 +37,4 @@ bootstrapApplication(App, {
     LoggedHttpService
   ]
 });
+console.log('PRUEBA');

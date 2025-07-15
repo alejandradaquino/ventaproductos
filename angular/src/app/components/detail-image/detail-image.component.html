@@ -1,0 +1,7 @@
+
+<div class="img-box" [ngStyle]="{'min-height': minHeight}">
+   <img *ngIf="detail.imgPath === undefined || detail.imgPath === ''" class="img-fluid" alt=""
+      src="http://bicifan.uy/wp-content/uploads/2016/09/producto-sin-imagen.png">
+    <img *ngIf="detail.imgPath !== undefined && detail.imgPath !== ''" class="img-fluid" alt=""
+      [src]="getImage(detail)">
+</div>

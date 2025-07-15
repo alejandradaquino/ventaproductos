@@ -1,0 +1,4 @@
+<div *ngIf="banner.imagePath !== undefined && banner.imagePath !== ''" class="img-box" [ngStyle]="{'min-height': minHeight}">
+  <img class="img-fluid" alt=""
+    [src]="getImage(banner)">
+</div>

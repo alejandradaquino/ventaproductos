@@ -1,0 +1,10 @@
+
+<div class="img-box" [ngStyle]="{ 'min-height': minHeight }">
+  @if (!article.imgPath) {
+    <img class="img-fluid" alt=""
+         src="http://bicifan.uy/wp-content/uploads/2016/09/producto-sin-imagen.png" />
+  } @else {
+    <img class="img-fluid" alt=""
+         [src]="getImage(article)" />
+  }
+</div>

@@ -1,0 +1,33 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-3 container-box" *ngFor="let article of articles">
+
+      <div class="article-container">
+        <div style="cursor: pointer;" [routerLink]="['/articulo', article.id, article.name]" routerLinkActive="router-link-active">
+          <app-offer *ngIf="article.hasDiscount(company.idPriceList)"></app-offer>
+
+          <div class="image-container">
+            <app-article-image [article]="article"></app-article-image>
+          </div>
+
+          <h5>
+            {{article.name}}<br><br>
+            {{article.axionCode}}
+          </h5>
+          <textarea id="textareaval" readonly="readonly" class="form-control" [innerHtml]="article.description"></textarea>
+          <app-price [article]="article" [company]="company"></app-price>
+        </div>
+        <app-plus-less *ngIf="quantities[article.code]>0" [quantity]="quantities[article.code]"
+          (plusClicked)="plusClicked(article)" (lessClicked)="lessClicked(article)"></app-plus-less>
+        <div *ngIf="quantities[article.code] === undefined || quantities[article.code] == 0">
+          <button type="button" class="btn btn-outline-primary" (click)="addToChart(article)">
+            <i class="fas fa-cart-arrow-down"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+[resultMessage]="resultMessage"></app-message>
+
+
+<div *ngIf="!registrationSent">
+	<h4 class="card-title">Registrarse</h4>
+	<form class="my-2 my-lg-0">
+		<label>Nombre</label> 
+		<input type="text" class="form-control" [(ngModel)]="user.fullName"placeholder="Nombre Completo" name="fullName">
+		<label>Email</label> 
+		<input type="text" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email">
+		<button class="btn btn-outline-primary" style="width: 100%;margin-top:25px" (click)="save()" type="button">
+			<i class="fa fa-user-circle"></i> Continuar
+		</button>
+	</form>
+</div>
+<div *ngIf="registrationSent">
+	<h4 class="card-title">Registración exitosa</h4>
+	<div  class="my-2 my-lg-0">
+		Gracias {{user.fullName}} por registrarte! Te enviamos un email con tu password para que inicies sesión a
+		{{user.email}}
+		<button class="btn-outline-primary" style="width: 100%;margin-top:25px" routerLink="/" type="button">
+			<i class="fa fa-user-circle"></i> Continuar
+		</button>
+	</div>
+</div>

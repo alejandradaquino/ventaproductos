@@ -1,0 +1,20 @@
+@if (article.hasDiscount(company.idPriceList)) {
+  <div class="default-price">
+    $ {{ getDefaultPrice() | number : '1.2-2' }}
+  </div>
+} @else {
+  <div style="height: 25px;"></div>
+}
+
+@if (getPrice() > 0) {
+  <div class="product-price">
+    $ {{ getPrice() | number : '1.2-2' }}
+    @if (isPublicList()) {
+      <span>(iva incluido)</span>
+    } @else {
+      <span>(sin iva)</span>
+    }
+  </div>
+} @else {
+  <div class="product-price">Consultar precio</div>
+}

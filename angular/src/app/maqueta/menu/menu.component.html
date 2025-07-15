@@ -1,0 +1,29 @@
+<div colorold="#E6463E" style="background-color: #f3a72d;min-height: 29px; padding-top: 2px; padding-bottom: 2px;">
+  <div class="container">
+    <ul class="drop1 d-none d-sm-block">
+      <li *ngIf="isBackofficeUser" class="enlinea">
+        <a class="white admin" [routerLink]="'/backoffice'">Administración</a>
+      </li>
+      <li class="enlinea" (mouseover)="category.showSubcategory = true" (mouseout)="category.showSubcategory=false"
+        *ngFor="let category of categories">
+        <div class="dropdown" id="level-1">
+          <a name="titulo" href="javascript:void(0)" [routerLink]="['/category', category.id, category.name]"
+            class="white ">
+            {{category.name}}
+            <i *ngIf="category.subcategories.length > 0" class="fas fa-angle-down"></i>
+          </a>
+
+          <ul class="dropdown-menu-container dropdown-menu shown" [class.shown]='category.showSubcategory' role="menu">
+            <li *ngFor="let subcategory of category.subcategories" class="dropdown-submenu">
+              <a (click)="category.showSubcategory= false"
+                [routerLink]="['/subcategory', subcategory.id, subcategory.name]">
+                {{subcategory.name}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <app-mobile-menu [categories]="categories"></app-mobile-menu>
+  </div>
+</div>

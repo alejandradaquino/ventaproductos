@@ -1,0 +1,17 @@
+
+
+<div class="row" *ngIf="title">
+	<div class="col-md-12">
+		<h4>{{title}}</h4>
+	</div>
+</div>
+<div class="row">
+	<div class="{{cols}}" *ngFor="let item of allItems; let idx = index">
+		<label> <input type="checkbox" name="options" value="{{item}}"
+			[checked]="itemsSelected.get(item)" [disabled]="disabled"
+			(change)="updateCheckedOptions(item, $event)" /> 
+			<span *ngIf="!allNames" >{{item}}</span> 
+			<span *ngIf="allNames" >{{allNames[idx]}}</span>
+		</label>
+	</div>
+</div>

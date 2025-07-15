@@ -1,0 +1,25 @@
+
+.bg-light {
+    background-color: #ffdfab!important;
+}
+.dropdown-menu{
+    background-color: transparent;
+}
+
+.dropdown-item {
+    background-color: #ffdfab!important;
+}
+
+
+.orderbadge {
+    position: absolute;
+    margin-left: -9px;
+    margin-top: 2px;
+}
+.carticon {    
+    font-size: 20px;
+    margin-left: -20px;
+    position: absolute;
+    margin-top: 9px;
+
+}

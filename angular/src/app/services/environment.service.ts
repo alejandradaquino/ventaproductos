@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Article } from '../model/article';
 import { Banner } from '../model/banner';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EnvironmentService {
   public imgSrc = 'https://cercana.com.ar/';
   //public url = 'http://alfersistemas.com.ar/cercana/';

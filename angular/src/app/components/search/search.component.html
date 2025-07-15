@@ -1,0 +1,8 @@
+<div class="input-group mb-3 mtop" >
+  <input type="text" class="form-control"
+  (keyup.enter)="onEnterPressed()"
+  [(ngModel)]="searchValue" placeholder="Search">
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" [routerLink]="['/search', searchValue]" type="submit"><i class="fas fa-search"></i></button>
+  </div>
+</div> 
