@@ -24,7 +24,7 @@ bootstrapApplication(App, {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimations(), // o remove if using NoopAnimationsModule
+    provideAnimations(),
     importProvidersFrom(
       FormsModule,
     ),
