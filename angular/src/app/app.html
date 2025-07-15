@@ -1,4 +1,12 @@
 <app-banner-header *ngIf="!showBackoffice"></app-banner-header>
+<app-search-bar *ngIf="!showBackoffice" [wip]="wip"></app-search-bar>
+
+<app-backoffice-login *ngIf="showBackoffice && !wip"></app-backoffice-login>
+
+<app-menu *ngIf="!showBackoffice && !wip" [shown]="!showBackoffice"></app-menu>
+<app-main-banner *ngIf="showMainBanner && !wip"></app-main-banner>
+<app-random-articles *ngIf="showMainBanner  && !wip" [shown]="showMainBanner"></app-random-articles>
+
 <div class="container" style="margin-top:20px;">
     <router-outlet>
     </router-outlet>

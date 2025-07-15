@@ -1,0 +1,89 @@
+<h1>Pedidos</h1>
+<div class="panel panel-default">
+  	<div class="panel-body">
+  		<h3>Buscar</h3>
+  		<div class="row" style="margin-top:20px;margin-bottom:25px">
+			<div class="col-md-6">
+				<div class="input-group">
+					<input type="text" [(ngModel)]="filterOrder.companyName"
+						class="form-control" placeholder="Filtro x compan&iacute;a ">
+					<span class="input-group-btn">
+						<button class="btn btn-outline-secondary" (click)="filterOrder.companyName=''">
+							<i class="fas fa-eraser"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group">
+					<input type="text" [(ngModel)]="filterOrder.orderNumber"
+						class="form-control" placeholder="Filtro x N&uacute;mero ">
+					<span class="input-group-btn">
+						<button class="btn btn-outline-secondary" (click)="filterOrder.orderNumber=''">
+							<i class="fas fa-eraser"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<table class="table table-bordered">
+		  <tr style="background-color: #eee">
+		    <th style="width: 200px">Detalles del pedido</th>
+		    <th>Art&iacute;culos</th>
+		  </tr>
+		  <tr *ngFor="let order of orders | orders: filterOrder.companyName: filterOrder.orderNumber" >
+		    <td style="padding-top:25px;width:35%;border-bottom:4px solid #eee">
+			    	<table class="table">
+			    		<tr>
+			    			<td style="padding:5px"><b>Fecha:</b></td><td>{{order.date | date:'MM/dd/yyyy hh:mm'}}</td>
+			   			</tr>
+			   			<tr>
+			    			<td style="padding:5px"><b>Compan&iacute;a:</b></td><td>{{order.companyName}}</td>
+			    		</tr>
+			   			<tr>
+			    			<td style="padding:5px"><b>N&uacute;mero:</b></td><td>{{order.orderNumber}}</td>
+			    		</tr>
+			   			<tr>
+			    			<td style="padding:5px"><b>Centro de costos:</b> </td><td>{{order.costCenter}}</td>
+			    		</tr>
+			   			<tr>
+			    			<td style="padding:5px"><b>Solicitante:</b></td><td>{{order.requesterName}}</td>
+			    		</tr>
+			   			<tr>
+			    			<td style="padding:5px"><b>Direcci&oacute;n:</b></td><td>{{order.address}}</td>
+			    		</tr>
+			   			<tr>
+			    			<td colspan="2" style="padding:5px"><b>Observaciones:</b></td>
+			    		</tr>
+			   			<tr>
+			    			<td colspan="2" >{{order.observations}}</td>
+			    		</tr>
+		   		</table> 
+			</td>
+		    <td style="padding-top:25px;border-bottom:4px solid #eee">
+			    	<table class="table">
+			    		<tr>
+							<th></th>
+			    			<th>Cantidad</th>
+			    			<th>Art</th>
+			    			<th style="text-align:right">Precio</th>
+			    			<th style="text-align:right">Total</th>
+			    		</tr>
+			    		<tr *ngFor="let detail of order.details">	
+							<td style="width: 60px;padding: 0px;"><app-detail-image [minHeight]="'50px'" [detail]="detail"></app-detail-image></td>
+			    	
+							<td style="padding:5px">{{detail.quantity}}</td>
+			    			<td style="padding:5px">({{detail.code}}) {{detail.name}}</td>
+			    			<td style="padding:5px;text-align:right">$ {{detail.price | number : '1.2-2'}}</td>
+			    			<td style="padding:5px;text-align:right">$ {{detail.getTotal() | number : '1.2-2'}}</td>
+			    		</tr>
+			    		<tr>
+			    			<td colspan="4"><b>Total del pedido:</b></td>
+			    			<td style="text-align:right"><b>$ {{order.getTotal() | number : '1.2-2'}}</b></td>
+			    		</tr>
+			    	</table>
+		    </td>
+		  </tr>
+		</table>
+	</div>
+</div>

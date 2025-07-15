@@ -2,7 +2,8 @@ import {Article} from '../model/article';
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'articles'
+  name: 'articles',
+  standalone: true
 })
 export class ArticlesPipe implements PipeTransform {
 

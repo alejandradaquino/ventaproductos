@@ -1,0 +1,32 @@
+
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+[resultMessage]="resultMessage"></app-message>
+<div class="row">
+  <h3>Actualizar precios</h3>
+</div>
+<div class="row" style="margin-bottom: 20px">
+  <div class="col-md-3">
+    <select class="form-control" [(ngModel)]="updatePriceListList">
+      <option value="-1"> Lista público</option>
+      <option *ngFor="let priceList of priceLists" [ngValue]="priceList">{{priceList.code}}</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <i style="position: absolute; margin-left: 80%;  margin-top: 6px; font-weight: bold;">%</i>
+    <input type="text" style="padding-right:10px" [(ngModel)]="percentage" class="form-control"
+      placeholder="Porcentaje">
+  </div>
+  <div class="col-md-3">
+    Precio ejemplo 10 -> {{sample}}
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-outline-primary" (click)="updateAllPrices()">Actualizar precios de la lista
+      seleccionada</button>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary"  style="margin-top: 30px;width: 100%;" (click)="downloadCSV()">
+
+      Bajar lista de precios
+    </button>
+  </div>
+</div>

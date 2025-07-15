@@ -8,7 +8,7 @@ import { Banner } from '../model/banner';
 export class EnvironmentService {
   public imgSrc = 'https://cercana.com.ar/';
   //public url = 'http://alfersistemas.com.ar/cercana/';
-  public url = '/';
+  public url = 'https://cercana.com.ar/';
   public urlRest = this.url + 'rest/';
 
   findArticle(id): string {

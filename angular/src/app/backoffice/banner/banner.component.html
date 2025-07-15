@@ -1,0 +1,70 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+
+<div class="card">
+
+<div class="card-heading">
+  <h2>Banners</h2>
+</div>
+<div class="card-body">
+  <div class="col-md-12" style="margin-top: 20px; margin-bottom: 30px;">
+    <div class="row">
+      <h3>Nuevo Banner</h3>
+    </div>
+    <div class="row" style="margin-bottom: 20px">
+      <div class="col-md-4">
+        <label class="btn btn-outline-primary" style="margin-top:26px;width:100%">Agregar imagen 
+          <input type="file" style="display: none" (change)="newFileChange($event)">
+        </label>
+        
+        <app-banner-image [banner]="newBanner"></app-banner-image>
+      </div>
+      <div class="col-md-4">
+        <label>Url</label> <input type="string"
+          class="form-control" [(ngModel)]="newBanner.url">
+      </div>
+      <div class="col-md-4">
+        <label>Orden</label> <input type="number"
+          class="form-control" [(ngModel)]="newBanner.order">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 20px">
+      <div class="col-md-4">
+        <button class="btn btn-outline-primary"
+          style="margin-top: 25px; width: 100%" (click)="save(newBanner)"
+          type="button">
+          <i class="glyphicon glyphicon-floppy-saved"></i> Guardar Banner
+        </button>
+      </div>
+    </div>
+  </div>
+  <table class="table table-cebre">
+    <tr>
+      <th>N&uacute;mero de banner</th>
+      <th>Url</th>
+      <th>Nombre</th>
+      <th style="width: 150px;">Imagen
+      </th>
+    </tr>
+    <tr *ngFor="let banner of banners">
+      <td>{{banner.id}}</td>
+      <td>{{banner.url}}</td>
+      <td>{{banner.order}}</td>
+      <td>
+        <app-banner-image [minHeight] = "'20px'" [banner]="banner"></app-banner-image>
+      </td>
+      <td>
+        <button class="btn btn-outline-secondary" style="width: 49%;float:left"
+          (click)="edit(banner)" type="button">
+           <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-outline-secondary" style="width: 49%;float:left"
+          (click)="deleteBanner(banner)" type="button">
+          <i class="fa fa-trash" aria-hidden="true"></i> 
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>

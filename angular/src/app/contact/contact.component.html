@@ -1,0 +1,32 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3  *ngIf="company.id != 3" >Contactos / Presupuestos</h3>
+		<h3  *ngIf="company.id == 3" >Contacto</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="col-md-12"><h4>Enviar mensaje</h4></div>
+				<div class="col-md-12" style="margin-top:25px">
+					<textarea class="form-control" style="height:255px" [(ngModel)]="message.message"></textarea>
+				</div>
+				<div class="col-md-12" style="margin-top:25px">
+					<button (click)="sendMessage()" class="btn btn-primary">
+						<i class="fa fa-envelope" aria-hidden="true"></i> Enviar
+					</button>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="col-md-12"><h4>Datos de contacto</h4></div>
+				<div class="col-md-12" style="margin-top:25px" ><b>Email:</b> {{configuration.email}}</div>
+				<div class="col-md-12" style="margin-top:25px"><b>Tel&eacute;fono:</b>
+					{{configuration.telefono}}</div>
+			</div>
+		</div>
+
+	</div>
+</div>

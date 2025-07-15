@@ -1,0 +1,68 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h2>Categor&iacute;as</h2>
+  </div>
+  <div class="panel-body">
+    <div class="card" style="margin-top:20px;margin-bottom:30px;">
+      <div class="card-body">
+
+        <h3 class="card-title">Nueva Categoría</h3>
+        <div class="row" style="margin-bottom:20px">
+          <div class="col-md-12">
+            <input type="text" class="form-control" [(ngModel)]="newCategory.name" placeholder="Nombre">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 row" >
+
+            <div class="col-md-9">
+              <input type="text" class="form-control" [(ngModel)]="newSubcategory.name" placeholder="Agregar Subcategoría">
+
+            </div>
+            <div class="col-md-3" style="padding: 0px;">
+              <i class="fas fa-plus plus-icon" (click)="addSubcategory()"></i>
+            </div>
+          </div>
+          <div class="col-md-3 row" *ngFor="let subcategory of newCategory.subcategories">
+            <div class="col-md-9">
+              <input type="text" class="form-control" [(ngModel)]="subcategory.name" >
+            </div>
+            <div class="col-md-3" style="padding: 0px;" style="cursor: pointer;" (click)="newCategory.removeSubcategory(subcategory);">
+              <i class="fas fa-trash-alt trash-icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <button class="btn btn-primary" style="width: 100%;margin-top:25px" (click)="save()" type="button">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="table table-cebre">
+      <tr>
+        <th style="width: 80%;">Categoría</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let category of categories">
+        <td  [innerHTML]="category.displayable">
+          
+        <td>
+          <button class="btn btn-outline-primary" style="width: 100%" (click)="edit(category)" type="button">
+            <i class="fas fa-pencil-alt"></i> Editar
+          </button>
+          <button class="btn btn-outline-primary" style="width: 100%" (click)="delete(category)" type="button">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

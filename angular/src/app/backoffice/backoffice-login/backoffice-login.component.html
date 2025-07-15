@@ -1,0 +1,35 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+            <img class="img-fluid logo" src="assets/img/logo.jpg">
+        </a>
+        <ul *ngIf="isLoggedUser"  class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/articles"> <i class="fas fa-store"></i>  Art&iacute;culos</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/categories"> <i class="fas fa-object-group"></i>  Categor&iacute;as</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/priceLists" *ngIf="showFullAdmin"><i class="fas fa-hand-holding-usd"></i>Listas de precios</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/companies" *ngIf="showFullAdmin"><i class="fa fa-cube"></i>Compan&iacute;as</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/users"><i class="fas fa-users"></i> Usuarios</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/pedidos"><i class="fas fa-archive"></i> Pedidos</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/actualizarPrecios"><i class="fas fa-hand-holding-usd"></i> Actualizar Precios</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/backoffice/banners"><i class="fas fa-ad"></i> Banners</a></li>
+            
+        </ul>
+        <form *ngIf="!isLoggedUser" class="form-inline my-2 my-lg-0">
+            <input type="text" class="mr-sm-2 form-control" [(ngModel)]="user.email" name="username" placeholder="Username">
+            <input type="password" class=" mr-sm-2 form-control" [(ngModel)]="user.password" name="password" placeholder="Password">
+            <button class="btn btn-outline-primary my-2 my-sm-0" (click)="login()" title="Ingresar"class="btn btn-outline-primary"><i class="fas fa-sign-in-alt"></i></button>
+        </form>
+
+        <form *ngIf="isLoggedUser" class="form-inline my-2 my-lg-0">
+            <a routerLink="/backoffice/profile"><i class="fa fa-user-circle-o"></i> Bienvenido {{user.fullName}}</a>
+            <button class="btn btn-outline-primary ml-2" title="Salir" (click)="logout()"><i class="fas fa-sign-out-alt"></i></button>
+        </form>
+    </div>
+</nav>

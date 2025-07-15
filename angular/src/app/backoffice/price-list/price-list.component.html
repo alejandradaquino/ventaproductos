@@ -1,0 +1,53 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+<div class="panel panel-default">
+
+	<div class="panel-heading">
+		<h2>Listas de precios</h2>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-12" style="margin-top:20px;margin-bottom:30px;">
+			<div class="row">
+				<h3>Nueva lista</h3>
+			</div>
+			<div class="row" style="margin-bottom:20px">
+				<div class="col-md-4">
+					<label>C&oacute;digo</label>
+					<input type="text" class="form-control" [(ngModel)]="newPriceList.code" placeholder="C&oacute;digo">
+				</div>
+				<div class="col-md-4">
+					<label>Nombre</label>
+					<input type="text" class="form-control" [(ngModel)]="newPriceList.name" placeholder="Nombre">
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-primary" style="width: 100%;margin-top:25px"
+						(click)="save(newPriceList)" type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Guardar Nueva Lista
+					</button>	
+				</div>
+			</div>
+		</div>
+		<table class="table table-cebre">
+			<tr>
+				<td>c&oacute;digo</td>
+				<td>nombre</td>
+				<td></td>
+			</tr>
+			<tr *ngFor="let priceList of priceLists" >
+				<td>	
+					<input type="text" class="form-control" [(ngModel)]="priceList.code" placeholder="C&oacute;digo">
+				</td>
+				<td>
+					<input type="text" class="form-control" [(ngModel)]="priceList.name" placeholder="Nombre">
+				</td>
+				<td>
+					<button class="btn btn-outline-primary" style="width: 100%"
+					(click)="save(priceList)" type="button">
+					<i class="glyphicon glyphicon-floppy-saved"></i> Guardar 
+				</button>	
+			</td>
+			</tr>
+		</table>
+	</div>
+</div>

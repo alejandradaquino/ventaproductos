@@ -1,0 +1,163 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+[resultMessage]="resultMessage"></app-message>
+<div class="panel panel-default">
+
+	<div class="panel-heading">
+		<h2>Art&iacute;culos</h2>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-12" style="margin-top: 20px; margin-bottom: 30px;">
+			
+			<div class="row">
+				<h3 *ngIf="newArticle.id <=0 || newArticle.id === undefined">Nuevo Art&iacute;culo</h3>
+				<h3 *ngIf="newArticle.id >0">Editar Art&iacute;culo</h3>
+			</div>
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col-md-6">
+					<label>C&oacute;digo</label> <input type="text" class="form-control" [(ngModel)]="newArticle.code"
+						placeholder="C&oacute;digo">
+				</div>
+				<div class="col-md-6">
+					<label>C&oacute;digo Axion</label> <input type="text" class="form-control" [(ngModel)]="newArticle.axionCode"
+						placeholder="C&oacute;digo Axion">
+				</div>
+				<div class="col-md-6">
+					<label>Nombre / Descripci&oacute;n</label> <input type="text" class="form-control"
+						[(ngModel)]="newArticle.name" placeholder="Nombre / Descripci&oacute;n">
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col-md-6">
+					<label>Categoría</label>
+					<select class="form-control" (change)="categoryChanged($event)" [(ngModel)]="newArticle.categoryId">
+						<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label>Subcategoría</label>
+					<select class="form-control" [(ngModel)]="newArticle.subcategoryId">
+						<option *ngFor="let subcategory of subcategories" [ngValue]="subcategory.id">
+							{{subcategory.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col-md-6">
+					<label>Precio al público</label>
+					<input type="text" class="form-control" [(ngModel)]="newArticle.defaultPrice"
+						placeholder="precio al público">
+				</div>
+				<div class="col-md-6" *ngFor="let priceList of priceLists">
+					<label>Precio lista {{priceList.code}}</label>
+					<input type="text" class="form-control" [(ngModel)]="newArticle.findPrice(priceList.id).value"
+						placeholder="precio {{priceList.name}}">
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col-md-6">
+					<label class="btn btn-outline-secondary" style="margin-top:26px;width:100%">Agregar imagen
+						<input type="file" style="display: none" (change)="newFileChange($event)">
+					  </label>
+					<app-article-image [article]="newArticle"></app-article-image>
+				</div>
+				<div class="col-md-6">
+					<label>Especificaciones</label>
+					<textarea style="height: 300px;" class="form-control" [(ngModel)]="newArticle.specifications"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<button class="btn btn-primary" style="margin-top: 25px; width: 100%" (click)="save(newArticle)"
+						type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Guardar
+					</button>
+				</div>
+				<div class="col-md-6" *ngIf="newArticle.id > 0">
+					<button class="btn btn-primary" style="margin-top: 25px; width: 100%" (click)="clearArticle()"
+						type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Cancelar
+					</button>
+				</div>
+			</div>
+		</div>
+		<table class="table table-cebre">
+			<tr>
+				<th style="width: 200px">
+					Categoría
+					<select class="form-control" [(ngModel)]="filterArticle.categoryId">
+						<option value="">Todas</option>
+						<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+					</select>
+				</th>
+				<th style="width: 150px">C&oacute;digo
+					Código<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Filtro x c&oacute;digo "
+							[(ngModel)]="filterArticle.code" aria-label="Recipient's username"
+							aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="filterArticle.code=''" type="button">
+								<i class="fas fa-eraser"></i>
+							</button>
+						</div>
+					</div>
+				</th>
+				<th>Descripci&oacute;n
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Filtro x Descripci&oacute;n "
+							[(ngModel)]="filterArticle.name" aria-label="Recipient's username"
+							aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="filterArticle.name=''" type="button"><i
+									class="fas fa-eraser"></i></button>
+						</div>
+					</div>
+				</th>
+				<th style="width:180px">Precios</th>
+				<th style="width: 100px">Imagen
+
+					<button *ngIf="showImage==true" style="width: 100%" class="btn btn-outline-primary"
+						(click)="showImage=false">
+						Ocultar Imagen <i class="glyphicon glyphicon-eye-close"></i>
+					</button>
+					<button *ngIf="showImage==false" style="width: 100%" class="btn btn-outline-primary"
+						(click)="showImage=true">
+						Mostrar Imagen <i class="glyphicon glyphicon-eye-open"></i>
+					</button>
+				</th>
+				<th style="width: 100px"></th>
+			</tr>
+			<tr
+				*ngFor="let article of articles | articles: filterArticle.code : filterArticle.name : filterArticle.categoryId.toString()">
+				<td>{{findCategoryName(article.categoryId)}} <br/> {{findSubcategoryName(article.categoryId, article.subcategoryId)}}</td>
+				<td>{{article.code}} <br/> {{article.axionCode}}</td>
+				<td>{{article.name}}</td>
+				<td>
+					<div><b> Publico</b>: 
+						<span style="float: right;">$ {{article.defaultPrice | number:'1.2-2'}}
+						</span>
+					</div>
+					<div  *ngFor="let p of priceLists"><b *ngIf="article.findPrice(p.id).value != article.defaultPrice"> {{p.code}}: </b>
+						<span style="float: right;" *ngIf="article.findPrice(p.id).value != article.defaultPrice">$ {{article.findPrice(p.id).value | number: '1.2-2'}}</span>
+					</div>
+				</td>
+				<td *ngIf="showImage==false">Clickeá en ver Imagenes.</td>
+				<td *ngIf="showImage">
+					<app-article-image [article]="article"></app-article-image>
+					<label class="btn btn-outline-primary"> Buscar Imagen <input type="file" style="display: none"
+							(change)="fileChange($event, article)">
+					</label>
+				</td>
+				<td>
+					<button class="btn btn-outline-primary" style="width: 49%;float:left" (click)="edit(article)"
+						type="button">
+						<i class="fas fa-pencil-alt"></i>
+					</button>
+					<button class="btn btn-outline-primary" style="width: 49%;float:left"
+						(click)="deleteArticle(article)" type="button">
+						<i class="fas fa-trash    "></i>
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

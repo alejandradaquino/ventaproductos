@@ -1,0 +1,65 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+<div class="panel panel-default">
+
+	<div class="panel-heading">
+		<h2>Compan&iacute;a</h2>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-12" style="margin-top:20px;margin-bottom:30px;">
+		
+			<div class="row">
+				<h3>Nueva Compan&iacute;a</h3>
+			</div>
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col-md-4">
+					<label>Nombre</label> <input type="text" class="form-control" [(ngModel)]="newCompany.name" placeholder="Nombre">
+				</div>
+				<div class="col-md-4">
+					<label>lista de precios</label>
+					<select  class="form-control" [(ngModel)]="newCompany.idPriceList">
+						<option *ngFor="let priceList of priceLists | orderBy code" 
+						 [ngValue]="priceList.id">{{priceList.name}}</option>
+					</select>
+				</div>
+				<div>
+					Addresses: {{newCompany.addresses}}
+					<input class="form-control"  type="text" [(ngModel)]="newAddress"/>
+					<button  class="btn btn-outline-primary" (click)="addAddress()">add </button>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-primary" style="width: 100%;margin-top:25px" (click)="save(newCompany)" type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Guardar Nueva Compan&iacute;a
+					</button>
+				</div>
+			</div>
+		</div>
+		<table class="table table-cebre">
+			<tr>
+				<th>nombre</th>
+				<th>lista de precios</th>
+				<th></th>
+			</tr>
+			<tr *ngFor="let company of companies">
+				<td><input type="text" class="form-control" [(ngModel)]="company.name" placeholder="Nombre"></td>
+				<td>
+					<select  class="form-control" [(ngModel)]="company.idPriceList">
+						<option *ngFor="let priceList of priceLists | orderBy code" 
+						
+						 [ngValue]="priceList.id">{{priceList.name}}</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" [(ngModel)]="company.addresses">
+				</td>
+		
+				<td>
+					<button class="btn btn-outline-primary" style="width: 100%" (click)="save(company)" type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Guardar
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

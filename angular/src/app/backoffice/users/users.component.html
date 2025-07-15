@@ -1,0 +1,115 @@
+<app-message [saveSuccess]="saveSuccess" [saveError]="saveError" [showMessage]="showMessage" [showResult]="showResult"
+  [resultMessage]="resultMessage"></app-message>
+
+<div class="panel panel-default">
+
+	<div class="panel-heading">
+		<h2>Usuarios</h2>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-12 card" style="margin-top:20px;margin-bottom:30px;padding:10px">
+			<div>
+				<h3>Nuevo Usuario</h3>
+			</div>
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col-md-6">
+					<label>Nombre Completo</label> <input type="text" class="form-control" [(ngModel)]="newUser.fullName" placeholder="Nombre Completo">
+				</div>
+				<div class="col-md-6">
+					<label>Email</label> <input type="text" class="form-control" [(ngModel)]="newUser.email" placeholder="Email">
+				</div>
+				<div class="col-md-6">
+					<label>Lista de precio</label> 
+					<select  class="form-control" [(ngModel)]="newUser.idCompany">
+						<option *ngFor="let company of companies" 
+						[ngValue]="company.id">{{company.name}}</option>
+					</select>
+				</div>
+				<div class="col-md-6" style="margin-top:35px" *ngIf="newUser.idCompany != 4">
+					<label>Ve catalogo completo </label>
+					<input class="form-check-label" style="margin:10px;margin-top:15px"  [(ngModel)]="newUser.seeAllArticles" type="checkbox" />
+				</div>
+				<div class="col-md-12">
+					<button class="btn btn-primary" style="margin-top:25px" (click)="save(newUser)" type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Guardar Nuevo Usuario
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button *ngIf="viewDeleted==true" class="btn btn-outline-primary"
+					(click)="viewDeleted=false;searchUsers()"> Ocultar Deshabilitados
+					<i class="glyphicon glyphicon-eye-close"></i>
+				</button>
+				<button *ngIf="viewDeleted==false"  class="btn btn-outline-primary"
+					(click)="viewDeleted=true;searchUsers()">Mostrar deshabilitados
+					<i class="glyphicon glyphicon-eye-open"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-cebre">
+			<tr>
+				<th>Nombre
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Filtro x Nombre "
+							[(ngModel)]="filterUser.fullName" aria-label="Recipient's username"
+							aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="filterUser.fullName=''" type="button"><i
+									class="fas fa-eraser"></i></button>
+						</div>
+					</div>
+				</th>
+				<th>Email
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Filtro x Nombre "
+							[(ngModel)]="filterUser.email" aria-label="Recipient's username"
+							aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="filterUser.email=''" type="button"><i
+									class="fas fa-eraser"></i></button>
+						</div>
+					</div>
+				
+				</th>
+				<th>Ve catalogo completo</th>
+				<th>Company
+
+					<select class="form-control" [(ngModel)]="filterUser.idCompany">
+						<option value="">Todas</option>
+						<option *ngFor="let company of companies" [ngValue]="company.id">{{company.name}}</option>
+					</select>
+				</th>
+			</tr>
+			<tr *ngFor="let user of users | users: filterUser.fullName : filterUser.email : filterUser.idCompany.toString()">
+				<td><input type="text" class="form-control" [(ngModel)]="user.fullName" placeholder="Nombre"></td>
+				<td><input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Nombre"></td>
+				<td><input [(ngModel)]="user.seeAllArticles" type="checkbox" /></td>
+				<td>
+					<select  class="form-control" [(ngModel)]="user.idCompany">
+						<option *ngFor="let company of companies" 
+						 [ngValue]="company.id">{{company.name}}</option>
+					</select>
+				</td>
+		
+				<td style="text-align: right;width: 500px;">
+					<button class="btn btn-outline-primary" (click)="resetUserPassword(user)">
+						<i class="fa fa-key" aria-hidden="true"></i>Regenerar contrase&ntilde;a
+					</button>
+					<button *ngIf="user.deleted==false" class="btn btn-outline-primary" (click)="disable(user)" type="button">
+						<i class="glyphicon glyphicon-eye-close"></i> Deshabilitar
+					</button>
+					<button *ngIf="user.deleted==true" class="btn btn-outline-primary" (click)="reenable(user)" type="button">
+						<i class="glyphicon glyphicon-eye-open"></i> Habilitar
+					</button>
+					<button class="btn btn-outline-primary" (click)="save(user)" type="button">
+						<i class="glyphicon glyphicon-floppy-saved"></i> Guardar
+					</button>
+				</td>
+			</tr>
+		</table>
+		
+		
+	</div>
+</div>

@@ -5,6 +5,11 @@ import { RouterModule, Router } from '@angular/router';
 import { OrderService } from './services/order.service';
 import { CommonModule } from '@angular/common';
 import { BannerHeaderComponent } from './maqueta/banner-header/banner-header.component';
+import { SearchBarComponent } from './maqueta/search-bar/search-bar.component';
+import { BackofficeLoginComponent } from './backoffice/backoffice-login/backoffice-login.component';
+import { MenuComponent } from './maqueta/menu/menu.component';
+import { MainBannerComponent } from './maqueta/main-banner/main-banner.component';
+import { RandomArticlesComponent } from './maqueta/random-articles/random-articles.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +17,12 @@ import { BannerHeaderComponent } from './maqueta/banner-header/banner-header.com
   imports: [
     CommonModule,           
     RouterModule,
-    BannerHeaderComponent            
+    BannerHeaderComponent,
+    SearchBarComponent,
+    BackofficeLoginComponent,
+    MenuComponent,
+    MainBannerComponent,
+    RandomArticlesComponent,            
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
@@ -31,7 +41,6 @@ export class App {
   }
 
   get showBackoffice(): boolean {
-    console.log("ALE "+this.router.url)
     return this.router.url.startsWith('/backoffice');
   }
 
