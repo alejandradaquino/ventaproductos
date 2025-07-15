@@ -18,13 +18,11 @@ import { CompanyService } from './app/services/company.service';
 import { UsersService } from './app/services/users.service';
 import { OrderService } from './app/services/order.service';
 import { LoggedHttpService } from './app/services/logged-http.service';
-
-// Rutas
-const appRoutes = [];
+import { routes } from './app/app.routes';
 
 bootstrapApplication(App, {
   providers: [
-    provideRouter(appRoutes),
+    provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(), // o remove if using NoopAnimationsModule
     importProvidersFrom(
