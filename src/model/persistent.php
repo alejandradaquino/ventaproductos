@@ -1,15 +1,10 @@
 <?php
 abstract class Persistent {
-     private static $dbname = "cercana_cercana";
+     private static $dbname = "wp_mkyed";
     private static $servername = "localhost";
-    private static $username = "cercana_cercana";
-    private static $password = "Cercana1";
-    /*private static $dbname = "alfersis_cercana";
-    private static $servername = "localhost";
-    private static $username = "alfersis_ale";
-    private static $password = "ajuarez";
-    */
-
+    private static $username = "adaquino_adaquino";
+    private static $password = "c[s+WaUm76XQ14";
+		
 	
 
 	static function executeQuery($query) {

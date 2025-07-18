@@ -67,11 +67,11 @@ class Company extends Persistent {
 	}
 
 	public static function tableName() {
-		return 'Company';
+		return 'A_Company';
 	}
 
 	private static function siteName() {
-		return 'Ventas Cercanas';
+		return 'Ventas España';
 	}
 }
 

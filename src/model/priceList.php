@@ -49,7 +49,7 @@ class PriceList extends Persistent {
 	}
 
 	private static function tableName() {
-		return 'PriceList';
+		return 'A_PriceList';
 	}
 }
 

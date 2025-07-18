@@ -114,7 +114,7 @@ class Detail extends Persistent
 
     private static function tableName()
     {
-        return 'Detail';
+        return 'A_Detail';
     }
 }
 

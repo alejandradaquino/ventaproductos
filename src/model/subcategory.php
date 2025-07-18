@@ -67,7 +67,7 @@ class Subcategory extends Persistent
 
     private static function tableName()
     {
-        return 'Subcategory';
+        return 'A_Subcategory';
     }
 }
 

@@ -95,7 +95,7 @@ class Banner extends Persistent
 
     private static function tableName()
     {
-        return 'Banner';
+        return 'A_Banner';
     }
 }
 

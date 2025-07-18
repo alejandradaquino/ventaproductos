@@ -93,7 +93,7 @@ class Category extends Persistent
 
     private static function tableName()
     {
-        return 'Category';
+        return 'A_Category';
     }
 }
 

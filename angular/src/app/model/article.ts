@@ -3,7 +3,7 @@ export class Article {
   id: number = 0;
   name: string = "";
   code: string = "";
-  axionCode: string = "";
+  wallapopLink: string = "";
   specifications: string = "";
   imgPath: string = "";
   defaultPrice: number = 0;

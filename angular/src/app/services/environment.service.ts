@@ -6,9 +6,9 @@ import { Banner } from '../model/banner';
   providedIn: 'root'
 })
 export class EnvironmentService {
-  public imgSrc = 'https://cercana.com.ar/';
+  public imgSrc = 'https://alejandrajuarezdaquino.com.ar/';
   //public url = 'http://alfersistemas.com.ar/cercana/';
-  public url = 'https://cercana.com.ar/';
+  public url = 'https://alejandrajuarezdaquino.com.ar/';
   public urlRest = this.url + 'rest/';
 
   findArticle(id): string {

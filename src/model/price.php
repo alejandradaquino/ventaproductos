@@ -77,7 +77,7 @@ class Price extends Persistent {
 	}
 
 	public static function tableName() {
-		return 'Price';
+		return 'A_Price';
 	}
 }
 

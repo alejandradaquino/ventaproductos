@@ -50,7 +50,7 @@ class Configuration extends Persistent
 
     private static function tableName()
     {
-        return 'Configuration';
+        return 'A_Configuration';
     }
     
     

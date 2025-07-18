@@ -227,6 +227,6 @@ class User extends Persistent
 
     public static function siteName()
     {
-        return 'Cercana';
+        return 'A_Cercana';
     }    
 }

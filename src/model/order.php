@@ -177,7 +177,7 @@ class Order extends Persistent
 
     private static function tableName()
     {
-        return 'Orders';
+        return 'A_Orders';
     }
 }
 

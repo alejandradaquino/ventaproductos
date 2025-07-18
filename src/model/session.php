@@ -55,7 +55,7 @@ class Session extends Persistent
 
     private static function tableName()
     {
-        return 'Session';
+        return 'A_Session';
     }
 
     public static function newSession($idUser)

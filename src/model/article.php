@@ -25,7 +25,7 @@ class Article extends Persistent
 
     public $subcategoryId;
 
-    public $axionCode;
+    public $wallapopLink;
 
     public function __construct($mixed)
     {
@@ -36,7 +36,7 @@ class Article extends Persistent
             $this->defaultPrice = isset($mixed->defaultPrice) ? $mixed->defaultPrice : "";
             $this->imgPath = isset($mixed->imgPath) ? $mixed->imgPath : "";
             $this->specifications = isset($mixed->specifications) ? $mixed->specifications : "";
-            $this->axionCode = isset($mixed->axionCode) ? $mixed->axionCode : "";
+            $this->wallapopLink = isset($mixed->wallapopLink) ? $mixed->wallapopLink : "";
             $this->categoryId = isset($mixed->categoryId) ? $mixed->categoryId : "";
             $this->subcategoryId = isset($mixed->subcategoryId) ? $mixed->subcategoryId : "";
         } else if (is_array($mixed)) {
@@ -46,7 +46,7 @@ class Article extends Persistent
             $this->defaultPrice = isset($mixed['defaultPrice']) ? $mixed['defaultPrice'] : "";
             $this->imgPath = isset($mixed['imgPath']) ? $mixed['imgPath'] : "";
             $this->specifications = isset($mixed['specifications']) ? $mixed['specifications'] : "";
-            $this->axionCode = isset($mixed['axionCode']) ? $mixed['axionCode'] : "";
+            $this->wallapopLink = isset($mixed['wallapopLink']) ? $mixed['wallapopLink'] : "";
             $this->categoryId = isset($mixed['categoryId']) ? $mixed['categoryId'] : "";
             $this->subcategoryId = isset($mixed['subcategoryId']) ? $mixed['subcategoryId'] : "";
         }
@@ -65,13 +65,13 @@ class Article extends Persistent
     {
         if (is_null($this->id)) {
             $this->id = Persistent::insertQuery("INSERT INTO " . Article::tableName() . 
-            "(id, name, specifications, code, defaultPrice, imgPath, axionCode, categoryId, subcategoryId) 
+            "(id, name, specifications, code, defaultPrice, imgPath, wallapopLink, categoryId, subcategoryId) 
             VALUES (NULL, '$this->name', 
                             '$this->specifications',
                             '$this->code',
                              $this->defaultPrice ,
                             '$this->imgPath', 
-                            '$this->axionCode',
+                            '$this->wallapopLink',
                             '$this->categoryId', 
                             '$this->subcategoryId');");
         } else {
@@ -79,7 +79,7 @@ class Article extends Persistent
 						     set name = '$this->name', 
                                  code = '$this->code', 
                        specifications = '$this->specifications',
-                            axionCode = '$this->axionCode',
+                         wallapopLink = '$this->wallapopLink',
 						 defaultPrice = '$this->defaultPrice', 
 							  imgPath = '$this->imgPath',
                            categoryId = '$this->categoryId',
@@ -173,7 +173,7 @@ class Article extends Persistent
         $result = Persistent::query("select * from " . Article::tableName() . "
          where upper(name) like upper('%$value%') 
             or upper(code) like upper('%$value%') 
-            or upper(axionCode) like upper('%$value%')
+            or upper(wallapopLink) like upper('%$value%')
             or upper(specifications) like upper('%$value%')");
         
         if($user!=null && !$user->seeAllArticles && Article::companyRestrictsArticles($user)){
@@ -186,7 +186,6 @@ class Article extends Persistent
                     and( 
                         upper(a.name) like upper('%$value%') 
                         or upper(a.code) like upper('%$value%') 
-                        or upper(a.axionCode) like upper('%$value%')
                         or upper(a.specifications) like upper('%$value%')
                     )"); 
         }  
@@ -243,7 +242,7 @@ class Article extends Persistent
 
     private static function tableName()
     {
-        return 'Article';
+        return 'A_Article';
     }
 
     public function setImagePath($imgPath)
