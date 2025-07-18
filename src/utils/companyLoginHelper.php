@@ -19,8 +19,8 @@ class CompanyLoginHelper
 
     public static function isValidBackofficeSession()
     {
-        $token = apache_request_headers()['http-token'];
-        $idCompany = apache_request_headers()['http-id-company'];
+        $token = $_SERVER['HTTP_HTTP_TOKEN'];
+        $idCompany = $_SERVER['HTTP_HTTP_ID_COMPANY'];
         $userId = Session::userIdBySession($token);
         if ($userId == null) {
             return 'false';
@@ -34,8 +34,8 @@ class CompanyLoginHelper
 
     public static function isValidSession()
     {
-        $token = apache_request_headers()['http-token'];
-        $idCompany = apache_request_headers()['http-id-company'];
+        $token = $_SERVER['HTTP_HTTP_TOKEN'];
+        $idCompany = $_SERVER['HTTP_HTTP_ID_COMPANY'];
         $userId = Session::userIdBySession($token);
         if ($userId == null) {
             return 'false';

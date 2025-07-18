@@ -17,7 +17,7 @@ import { CompanyLastOrdersComponent } from './company-last-orders/company-last-o
 import { SearchResultComponent } from './maqueta/search-result/search-result.component';
 
 export const routes: Routes = [ 
-   {path: 'backoffice', component: LoginBackofficeComponent},
+  {path: 'backoffice', component: LoginBackofficeComponent},
   {path: 'backoffice/articles', component: ArticlesComponent},
   {path: 'backoffice/priceLists', component: PriceListComponent},
   {path: 'backoffice/companies', component: CompanyComponent},

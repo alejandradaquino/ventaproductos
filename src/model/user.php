@@ -189,7 +189,7 @@ class User extends Persistent
 
     private static function tableName()
     {
-        return 'User';
+        return 'A_User';
     }
 
     public function checkLogin()
@@ -215,7 +215,7 @@ class User extends Persistent
             if (User::findByEmail($user->email) != null) {
                 return "Ya existe una cuenta con este email. Si olvidó su contraseña solicite el reenvío de la misma";
             }
-            $user = User::create($user->fullName, $user->email, 4);
+            $user = User::create($user->fullName, $user->email, 4, true);
             $siteName = User::siteName();
             EmailHelper::send($user->email, "Bienvenido a $siteName", " Proximamente se habilitar&aacute; tu usuario para poder realizar pedidos, mientras tanto pod&eacute;s ingresar
                         con esta password: $user->password");
@@ -227,6 +227,6 @@ class User extends Persistent
 
     public static function siteName()
     {
-        return 'A_Cercana';
+        return 'Ale Ventas';
     }    
 }

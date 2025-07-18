@@ -3,6 +3,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 require_once '../model/order.php';
 require_once '../utils/companyLoginHelper.php';
 
+header('Content-Type: application/json');
 switch ($method) {
     case 'GET':
         if ($_GET['mode'] == 'all') {

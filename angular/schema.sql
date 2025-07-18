@@ -142,6 +142,8 @@ INSERT INTO `A_Category` (`name`) VALUES
 ('Muebles'),
 ('Tecnología'),
 ('Bazar'),
+('Juguetes'),
+('Fitness'),
 ('Otros');
 
 -- Tabla Subcategory (referencias por subconsulta)
@@ -150,6 +152,27 @@ INSERT INTO `A_Subcategory` (`name`, `categoryId`) VALUES
 ('Niños',      (SELECT id FROM A_Category WHERE name = 'Muebles')),
 ('Tecnología',   (SELECT id FROM A_Category WHERE name = 'Tecnología')),
 ('Bazar',        (SELECT id FROM A_Category WHERE name = 'Bazar')),
-('Juguetes',        (SELECT id FROM A_Category WHERE name = 'Otros'));
+('Juguetes',        (SELECT id FROM A_Category WHERE name = 'Juguetes')),
+('Fitness',        (SELECT id FROM A_Category WHERE name = 'Fitness')),
 ('Otros',        (SELECT id FROM A_Category WHERE name = 'Otros'));
 
+
+INSERT INTO `A_Article` (
+  `name`,
+  `specifications`,
+  `code`,
+  `defaultPrice`,
+  `imgPath`,
+  `categoryId`,
+  `subcategoryId`,
+  `wallapopLink`
+) VALUES (
+  'Mesa de Oficina Rectangular 120x60 cm',
+  'Estructura metálica blanca, tapa melamina roble claro, patas regulables, altura 75 cm',
+  'ME-OFI-12060',
+  199.9900,
+  'img/mesa_oficina_120x60.jpg',
+  (SELECT id FROM A_Category WHERE name = 'Muebles'),
+  (SELECT id FROM A_Subcategory WHERE name = 'Living'),
+  'https://es.wallapop.com/item/mesa-de-oficina-rectangular-120x60-123456789'
+);

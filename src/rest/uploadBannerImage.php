@@ -1,6 +1,7 @@
 <?php
 require_once '../model/banner.php';
 
+header('Content-Type: application/json');
 $target_dir = "banner/";
 $target_file = "../" . $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

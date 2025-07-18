@@ -11,6 +11,7 @@ if($userId != null){
     $user = User::findById($userId);
 }
 
+header('Content-Type: application/json');
 
 switch ($method) {
     case 'GET':

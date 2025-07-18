@@ -3,6 +3,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 require_once '../model/configuration.php';
 require_once '../utils/emailHelper.php';
 
+header('Content-Type: application/json');
 switch ($method) {
     case 'GET':
         echo json_encode(Configuration::find());

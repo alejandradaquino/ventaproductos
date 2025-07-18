@@ -43,7 +43,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
       }
     }, error => {
       console.log(error);
-      this.showResultOk(error.error.status);
+      this.showMessage = error; 
+      this.showError();
     });
   }
 

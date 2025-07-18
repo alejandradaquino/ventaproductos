@@ -8,6 +8,7 @@ require_once '../model/company.php';
 require_once '../model/article.php';
 
 
+header('Content-Type: application/json');
 switch ($method) {
     case 'GET':
     

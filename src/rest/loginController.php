@@ -4,6 +4,7 @@ require_once '../model/company.php';
 require_once '../model/user.php';
 require_once '../model/session.php';
 require_once '../utils/companyLoginHelper.php';
+header('Content-Type: application/json');
 switch ($method) {
     case 'GET':
     case 'POST':
