@@ -129,7 +129,7 @@
 			<tr
 				*ngFor="let article of articles | articles: filterArticle.code : filterArticle.name : filterArticle.categoryId.toString()">
 				<td>{{findCategoryName(article.categoryId)}} <br/> {{findSubcategoryName(article.categoryId, article.subcategoryId)}}</td>
-				<td>{{article.code}} <br/> {{article.axionCode}}</td>
+				<td>{{article.code}} <br/> {{article.wallapopLink}}</td>
 				<td>{{article.name}}</td>
 				<td>
 					<div><b> Publico</b>: 

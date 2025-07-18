@@ -65,7 +65,7 @@ export class OrderService {
     const order = this.isOrderInCurse() ? this.getOrderInCurse() : this.createOrder();
     const findedPrice = article.findPrice(company.idPriceList);
     const detail = new Detail({
-      name: article.name + article.description + " (" + article.axionCode + ")",
+      name: article.name + article.description + " (" + article.wallapopLink + ")",
       idArticle: article.id,
       article: article,
       code: article.code,
